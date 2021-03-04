@@ -51,45 +51,13 @@ set(${PROJECT_NAME}_dependencies
 ##  Build  ##
 #############
 
-add_library(${PROJECT_NAME} SHARED
-  src/robot_task.cc
-)
-
-ament_target_dependencies(${PROJECT_NAME} 
-  ${${PROJECT_NAME}_dependencies}
-)
-target_link_libraries(${PROJECT_NAME} 
-  ${WEBOTS_LIB}
-)
-
-add_executable(robot_task_node 
-  src/robot_task_node.cc
-)
-ament_target_dependencies(robot_task_node 
-  ${${PROJECT_NAME}_dependencies}
-)
-target_link_libraries(robot_task_node 
-  ${PROJECT_NAME}  
-)
 
 #############
 ## Install ##
 #############
 
 install(
-  TARGETS ${PROJECT_NAME} 
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib
-  RUNTIME DESTINATION bin
-  INCLUDES DESTINATION include
-)
-
-install(TARGETS robot_task_node
-  RUNTIME DESTINATION lib/${PROJECT_NAME}
-)
-
-install(
-  DIRECTORY launch worlds resources config
+  DIRECTORY launch config
   DESTINATION share/${PROJECT_NAME}
 )
 
