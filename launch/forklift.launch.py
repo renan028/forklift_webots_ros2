@@ -32,10 +32,9 @@ def generate_launch_description():
     webots = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(get_package_share_directory('webots_ros2_core'), 
-                'launch', 'robot_launch.py')
+                'launch', 'webots_launch.py')
         ),
         launch_arguments={
-            'executable': '',
             'world': os.path.join(robot_dir, 'forklift_webots', 'worlds', 
                 'warehouse.wbt'),
             'output': 'screen'
